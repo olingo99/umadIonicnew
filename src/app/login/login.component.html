@@ -1,0 +1,17 @@
+
+<div class="container">
+  <h1>Umad?</h1>
+  <p id="resLabel">{{resLabel}}</p>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event.submitter.id)" class = "form-group">
+        <div>
+              <label for="username">Username</label>
+              <input type="text" formControlName="username" id="username">
+        </div>
+        <div>
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" id="password">
+        </div>
+        <button type="submit" id="SignIn" [disabled]="!loginForm.valid">login</button>
+        <button type="submit" id="SignUp">signup</button>
+  </form>
+</div>

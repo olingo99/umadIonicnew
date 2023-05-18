@@ -1,3 +1,11 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<div class="topBar" *ngIf="!this.router.url.includes('login')">
+  <div class="titleContainer">
+      <div (click)="goHome()" class="titleText"> UMad?</div>
+  </div>
+  <i (click)="goHome()" class="fa-solid fa-home"></i>
+  <i (click)="disconnect()" class="fa-solid fa-unlink"></i>
+</div>
+<ion-router-outlet></ion-router-outlet>
 </ion-app>
+

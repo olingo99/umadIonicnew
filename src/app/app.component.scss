@@ -1,0 +1,24 @@
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .titleContainer {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .titleText {
+    cursor: pointer;
+  }
+  
+  .iconContainer {
+    display: flex;
+  }
+  
+  .fa-solid {
+    margin-left: 10px;
+    cursor: pointer;
+  }

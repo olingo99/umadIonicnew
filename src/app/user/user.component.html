@@ -1,0 +1,15 @@
+
+<div *ngIf="active">
+<p>{{user.Name}}</p>
+<img [src]="imageSource" alt="UMad" width="99%" />
+<!-- <progress value ={{user.Mood}} max="100"></progress> -->
+<div class="progress-bar-container">
+    <div class="progress-bar">
+        <div class="marker start text">-100</div>
+        <div class="marker middle text ">0</div>
+        <div class="marker end text">100</div>
+    </div>
+</div>
+
+<app-event [event]="event" [user]="user"></app-event>
+</div>

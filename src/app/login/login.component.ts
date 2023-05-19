@@ -40,7 +40,9 @@ export class LoginComponent{
         next: (data) => {
           console.warn(data)
           this.authTokenService.setToken(data.token);
-          this.router.navigate(['home'], { queryParams: { id: data.iduser } });
+          // this.router.navigate(['home'], { queryParams: { id: data.iduser } });
+          this.router.navigate(['tabs'], { queryParams: { id: data.iduser } });
+
         },
         error: (error) => {
           this.resLabel = "Wrong username or password";

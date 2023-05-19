@@ -1,0 +1,11 @@
+<div (click)="friendClick()" style="cursor:pointer" class="vertical-separator">
+    <div class="separated">
+        <img [src]="imageSource" alt="UMad" width="40%" />
+    </div>
+    <div class="separated">
+        <p>{{friend.Name}}</p>
+        <!-- <app-event *ngIf="active" [event]="event" [user]="friend"></app-event> -->
+        <app-event [event]="event" [user]="friend"></app-event>
+
+    </div>
+</div>

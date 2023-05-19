@@ -9,6 +9,15 @@ import { AuthTokenService } from './auth-token.service';
 })
 export class AppComponent {
   title = 'umadAngularfeur';
+  id = 0;
+  doneInit = false;
+
+  ngOnInit(): void {
+    this.id = +this.router.url.split("=").splice(-1);
+    console.log(this.id);
+    console.log("init here");
+    this.doneInit = true;
+  }
 
   displayTopBar=false;
   // test = ;
@@ -23,6 +32,7 @@ export class AppComponent {
     //read id from base url
     // console.log("url")
     // console.log(this.router.url)
+    console.log("feur")
     let id = +this.router.url.split("=").splice(-1)
     // console.log(this.router.url.split("=").splice(-1))
 

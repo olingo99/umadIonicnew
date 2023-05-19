@@ -1,5 +1,6 @@
-.topBar {
-    display: flex;
+
+.topBar{
+    --display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
@@ -21,4 +22,16 @@
   .fa-solid {
     margin-left: 10px;
     cursor: pointer;
+  }
+
+  ion-icon {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  ion-router-outlet {
+    display: block;
+    height: 100%;
+    padding-bottom: 100;
+    margin: 100;
   }

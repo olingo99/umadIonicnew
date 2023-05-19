@@ -1,0 +1,12 @@
+.eventBar {
+    /* background-color: var(--color-topbar); */
+    color: var(--color-text);
+    font-size: 30px;
+    text-align: center;
+    overflow: hidden;
+    /* height: 5vh; */
+  }
+
+app-event{
+  padding: 10px;
+}

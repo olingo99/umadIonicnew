@@ -1,0 +1,25 @@
+
+.vertical-separator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.weight{
+    font-weight: bold;
+    padding-right: 15px;
+    font-size: 25px;
+}
+
+.event{
+    padding-left: 10px;
+    font-size: 25px;
+    justify-content: left;
+    text-align: left;
+}
+
+#category{
+    padding-left: 10px;
+    font-size: 20px;
+}
+

@@ -26,6 +26,16 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 
+:root {
+  --color-link: #0e131f;
+  --color-text: #c8c8c8;
+  --color-background: #30343f;
+  --color-button: #c03221;
+  --color-hover: #c03121cb;
+  --color-topbar: #0e131f;
+  --color-selected: #614343;
+}
+
 /* You can add global styles to this file, and also import other style files */
 body {
     background-color: var(--color-background);

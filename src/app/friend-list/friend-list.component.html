@@ -1,0 +1,28 @@
+<div class="eventBar">
+    Friend list
+</div>
+
+<!-- <div class = list *ngIf="active"> -->
+<div>
+    <p>Add a friend!</p>
+    <form [formGroup]="friendForm" (ngSubmit)="onSubmitFriendForm()" class = "form-group">
+        <div>
+              <!-- <label for="username">Username</label> -->
+              <input type="text" formControlName="friendName" id="friendName" placeholder="UserName">
+        </div>
+        <button type="submit" id="SignUp">Add friend</button>
+  </form>
+</div>
+<div class = "separator"></div>
+<div class = list>
+
+    <app-friend  *ngFor="let friend of friends" [friend]="friend" ></app-friend>
+</div>
+<div>
+    <p>Friend requests</p>
+    <div *ngFor="let friendRequest of friendRequests">
+        <p>{{friendRequest.Name}}</p>
+        <button (click)="acceptFriendRequest(friendRequest)">Accept</button>
+        <button (click)="declineFriendRequest(friendRequest)">Decline</button>
+    </div>
+</div>

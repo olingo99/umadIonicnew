@@ -54,12 +54,12 @@ export class FriendComponent {
   }
 
   getSourceImage(mood: number): string {
-    if (mood <-90){
+    if (mood >90){
       return "assets/images/verryHappy.png";
     }
-    if (mood <=0){
+    if (mood >=0){
       return "assets/images/happy.png";
     }
-    return `assets/images/sad${Math.ceil(mood/14)}.png`;
+    return `assets/images/sad${Math.ceil(-mood/14)}.png`;
   }
 }

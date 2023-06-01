@@ -10,3 +10,9 @@
 app-event{
   padding: 10px;
 }
+
+.list{
+  display: flex;
+  flex-direction: column;
+  justify-content: top; 
+}

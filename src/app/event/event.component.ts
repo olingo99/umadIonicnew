@@ -1,7 +1,6 @@
-import { Component, Input,Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Event } from '../event.service';
 import { CategoryService, Category } from '../category.service';
-import { ActivatedRoute } from '@angular/router';
 import { User } from '../user.service';
 
 
@@ -11,26 +10,20 @@ import { User } from '../user.service';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent {
-  @Input() event: Event = new Event();
-  // @Input() event: string= "";
-  @Input() user: User = new User();
+  @Input() event: Event = new Event();  //Event to display
+  @Input() user: User = new User(); //User to whom the event belongs
 
 
-  category: Category = new Category();
+  category: Category = new Category();  //Category of the event
 
   constructor(
     private categoryService: CategoryService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    console.warn('event init');
-    console.log(this.event);
-
-    this.categoryService.getCategoryById(this.user.iduser, this.event.idcategory).subscribe({
+    this.categoryService.getCategoryById(this.user.iduser, this.event.idcategory).subscribe({ //Get the category of the event
       next: (data) => {
-        console.warn(data)
-        this.category = data;
+        this.category = data; //Set the category
       },
       error: (error) => {
         console.log('error');
@@ -38,40 +31,13 @@ export class EventComponent {
         this.category = new Category();
       },
     });
-
-    // this.route.params.subscribe((params) => {
-    //   this.categoryService.getCategoryById(params['id'], this.event.idcategory).subscribe({
-    //     next: (data) => {
-    //       console.warn(data)
-    //       this.category = data;
-    //     },
-    //     error: (error) => {
-    //       console.log('error');
-    //       console.log(error);
-    //     },
-    //   });
-    // }
-    // );
-
-
-
-    // this.categoryService.getCategoryById(this.event.idcategory).subscribe({
-    //   next: (data) => {
-    //     console.warn(data)
-    //     this.category = data;
-    //   },
-    //   error: (error) => {
-    //     console.log('error');
-    //     console.log(error);
-    //   },
-    // });
   }
 
   ngOnChanges() {
-    console.warn("user component")
     this.ngOnInit();
   }
-
+  
+  //Function used to get the color of the weight of the event
   getColor(weight: number): string {
     return weight > 0 ? "green" : "red";
   }

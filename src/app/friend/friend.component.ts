@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import {Input} from '@angular/core';
-import { User } from '../user.service';
+import { User,UserService } from '../user.service';
 import { Event, EventService } from '../event.service';
 import { Router } from '@angular/router';
+
+/*
+Component used to display a friend in the friend list component. Uses the event component to display the last event of the friend
+*/
+
 
 @Component({
   selector: 'app-friend',
@@ -10,26 +15,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./friend.component.css']
 })
 export class FriendComponent {
-  @Input() friend: User = new User();
-  event: Event = new Event();
-  active: boolean = false;
+  @Input() friend: User = new User(); //friend to display
+  event: Event = new Event(); //last event of the friend
+  active: boolean = false;  //Boolean used to display the component only when the data is loaded
 
   imageSource: string = "assets/images/happy.png";
 
   constructor(
     private eventService: EventService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
 
   ngOnInit() {
-    this.imageSource = this.getSourceImage(this.friend.Mood);
-    this.eventService.getLastEventsByUserId(this.friend.iduser).subscribe({
-      next : (data) => {
-        console.warn("last event data ");
-        console.warn(data);
-        this.event = data[0];
-        this.active = true;
+    this.imageSource = this.userService.getSourceImage(this.friend.Mood); //Set the image source depending on the mood of the user
+    this.eventService.getLastEventsByUserId(this.friend.iduser).subscribe({ //Call the getLastEventsByUserId function of the eventService
+      next : (data) => { //Get the last event of the user
+        this.event = data[0]; //Set the event to display, the last event function returns an array of 1 event
+        this.active = true; //Display the component
       },
       error : (error) => {
         console.log(error);
@@ -41,25 +45,7 @@ export class FriendComponent {
   }
 
   ngOnChanges() {
-    console.warn("user component")
     this.ngOnInit();
   }
 
-  friendClick() {
-    console.warn("friend click");
-    this.router.navigate(['/home'], { queryParams: { id: this.friend.iduser } });
-  //   this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-  //     this.router.navigate(['/home'], { queryParams: { id: this.friend.iduser } });
-  // });
-  }
-
-  getSourceImage(mood: number): string {
-    if (mood >90){
-      return "assets/images/verryHappy.png";
-    }
-    if (mood >=0){
-      return "assets/images/happy.png";
-    }
-    return `assets/images/sad${Math.ceil(-mood/14)}.png`;
-  }
 }

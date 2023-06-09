@@ -13,15 +13,11 @@ import { FriendListComponent } from './friend-list/friend-list.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'tabs', component: TabsPage, children: [
-    // { path: 'home', component: HomeComponent },
     { path: 'user', component: UserComponent },
     { path: 'eventDay', component: EventDayComponent },
     { path: 'friendList', component: FriendListComponent },
   ]},
   { path: 'login', component: LoginComponent },
-  // { path: 'home', component: HomeComponent },
-  // {path : 'eventCreation', component: EventCreationPageComponent},
-  // {path: 'allEvents', component: AllEventsComponent}
 ];
 
 @NgModule({

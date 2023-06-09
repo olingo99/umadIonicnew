@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { Event, EventService } from '../event.service';
 import { ActivatedRoute } from '@angular/router';
-import { Input } from '@angular/core';
 import { User} from '../user.service';
 import { UserService } from '../user.service';
+
+/*
+Component used to display the events of the day of the user. Uses the event component to display the events.
+*/
+
+
+
 
 @Component({
   selector: 'app-event-day',
@@ -12,10 +18,9 @@ import { UserService } from '../user.service';
 })
 export class EventDayComponent {
 
-  events: Event[] = [];
-  // events: string = "";
+  events: Event[] = []; //Events of the day
 
-  user: User = new User();
+  user: User = new User();  //User to whom the events belong
 
   constructor(
     private eventService: EventService,
@@ -24,48 +29,12 @@ export class EventDayComponent {
   ) { }
 
   ngOnInit(): void {
-
-    // this.route.params.subscribe((params) => {
-    //   console.warn('params[]')
-    //   console.warn(params['id'])
-    //   this.eventService.getTodayEventsByUserId(params['id']).subscribe({
-    //     next: (data) => {
-    //       console.warn(data)
-    //       this.events = data;
-    //     },
-    //     error: (error) => {
-    //       console.log('error');
-    //       console.log(error);
-    //     },
-    //   });
-    // }
-    // );
-
-    // this.route.queryParams.subscribe((params) => {
-    //   this.userService.getUserById(params['id']).subscribe({
-    //     next: (data) => {
-    //       this.user = data;
-    //       console.warn('user');
-    //       console.warn(typeof data);
-    //       this.active = true;
-    //     },
-    //     error: (error) => {
-    //       console.log('error');
-    //       console.log(error);
-    //     },
-    //   });
-    // }
-    // );
-
-    this.route.queryParams.subscribe((params) => {
-      console.warn('params[] home')
-      console.warn(params['id'])
-      this.userService.getUserById(params['id']).subscribe({
+    this.route.queryParams.subscribe((params) => {  //get the user id from the url
+      this.userService.getUserById(params['id']).subscribe({  //get the user
         next: (data) => {
           this.user =  data;
-          this.eventService.getTodayEventsByUserId(this.user.iduser).subscribe({
+          this.eventService.getTodayEventsByUserId(this.user.iduser).subscribe({  //get the events of the day of the user
             next: (data) => {
-              console.warn(data)
               this.events = data;
             },
             error: (error) => {
@@ -81,24 +50,9 @@ export class EventDayComponent {
         },
       });
     });
-
-
-
-    // this.eventService.getTodayEventsByUserId(this.user.iduser).subscribe({
-    //   next: (data) => {
-    //     console.warn(data)
-    //     this.events = data;
-    //   },
-    //   error: (error) => {
-    //     console.log('error');
-    //     console.log(error);
-    //     this.events = [];
-    //   },
-    // });
   }
 
   ngOnChanges() {
-    console.warn("user component")
     this.ngOnInit();
   }
 }
